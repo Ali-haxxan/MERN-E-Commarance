@@ -6,6 +6,7 @@ const connectDB = require('./config/mongo')
 const path = require('path')
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const route = require('./routes/web')
 
 
 app.use(cors());
@@ -39,7 +40,7 @@ connectDB()
 
 
 ////////////     ** route path star **
-app.use('/',require('./routes/web'))
+app.use('/',route)
 ////////////     ** route path end **
 
 

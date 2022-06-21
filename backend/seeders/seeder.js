@@ -1,20 +1,20 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-// const color = require('color')
+const color = require('color')
 const users = require('../data/users')
 const products = require("../data/products")
 const User = require('../models/userModel')
 const Product = require('../models/productModel')
-const Order = require('../models/orderModel')
+// const Order = require('../models/orderModel')
 const connectDB = require('../config/mongo')
 
 connectDB()
 
 const importData = async () =>{
     try {
-        await Order.deleteMany()
-        await Product.deleteMany()
-        await User.deleteMany()
+        // await Order.deleteMany({})
+        await Product.deleteMany({})
+        await User.deleteMany({})
 
         const createdUsers =await User.insertMany(users)
 
@@ -49,8 +49,8 @@ const destroyData = async () =>{
     }
 }
 
-// if(process.argv[2]=== '-d'){
-//     destroyData()
-// }else{
+if(process.argv[2]=== '-d'){
+    destroyData()
+}else{
     importData()
-// }
+}
